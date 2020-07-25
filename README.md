@@ -62,7 +62,7 @@ Replace the scheme with this
 }
 ```
 
-Àdd keybindings
+Add keybindings
 ```
 { "command": { "action": "splitPane", "split": "vertical" }, "keys": "alt+shift+numpad_add" },
 { "command": { "action": "splitPane", "split": "horizontal" }, "keys": "alt+shift+numpad_minus" },
