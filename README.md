@@ -78,7 +78,7 @@ generateResolvConf = true
 
 #  Run
 The playbook must be runned as user (not root)  
-ansible-playbook -i localhost, deploy.yml --ask-become-pass  
+`ansible-playbook -i localhost, deploy.yml --ask-become-pass`  
 
 # Credits
 
