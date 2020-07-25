@@ -1,0 +1,4 @@
+---
+packer_version: 1.6.0
+terraform_version: 0.12.29
+terragrunt_version: 0.23.31

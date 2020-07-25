@@ -1,0 +1,28 @@
+---
+- name: Check if packer is already installed
+  stat:
+    path: /usr/local/bin/packer
+  register: packer
+
+- name: "Download packer version {{ packer_version }}"
+  get_url:
+    url: "https://releases.hashicorp.com/packer/{{ packer_version}}/packer_{{ packer_version}}_linux_amd64.zip"
+    dest: /tmp/packer.zip
+  when: not packer.stat.exists
+
+- name: Extract packer binary
+  unarchive:
+    src: /tmp/packer.zip
+    dest: /tmp
+    remote_src: yes
+  when: not packer.stat.exists
+
+- name: Copy packer binary to /usr/local/bin
+  copy:
+    src: /tmp/packer
+    dest: /usr/local/bin/packer
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: 0700
+    remote_src: yes
+  when: not packer.stat.exists

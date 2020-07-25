@@ -1,0 +1,77 @@
+---
+- name: Install required python package
+  pip:
+    name: pexpect
+
+- name: Install zsh
+  apt:
+    name: zsh
+    state: present
+
+- name: Set zsh as default shell
+  user:
+    name: "{{ item }}"
+    shell: /bin/zsh
+  with_items:
+    - root
+    - "{{ username_on_the_host }}"
+
+- name: Check if oh-my-zsh is already installed on root
+  stat:
+    path: /root/.oh-my-zsh
+  register: oh_my_zsh_root
+
+- name: "Check if oh-my-zsh is already installed on {{ username_on_the_host }}"
+  stat:
+    path: "/home/{{ username_on_the_host }}/.oh-my-zsh"
+  register: oh_my_zsh
+
+- name: Download oh-my-zsh installer
+  get_url:
+    url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
+    dest: /tmp/install.sh
+    mode: a+x
+  when: not oh_my_zsh_root.stat.exists or not oh_my_zsh.stat.exists
+
+- name: Install oh-my-zsh on root account
+  command: sh /tmp/install.sh
+  when: not oh_my_zsh_root.stat.exists
+
+- name: "Install oh-my-zsh on {{ username_on_the_host }} account"
+  command: sh /tmp/install.sh
+  become_user: "{{ username_on_the_host }}"
+  when: not oh_my_zsh.stat.exists
+
+- name: Git clone powerlevel10k on root account
+  git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    dest: /root/powerlevel10k
+    depth: 1
+
+- name: "Git clone powerlevel10k on {{ username_on_the_host }} account"
+  git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    dest: "/home/{{ username_on_the_host }}/powerlevel10k"
+    depth: 1
+
+- name: Configure zsh
+  template:
+    src: ../templates/zsh/zshrc.j2
+    dest: "{{ item.path }}/.zshrc"
+    owner: "{{ item.user }}"
+    group: "{{ item.user }}"
+    mode: '0644'
+  with_items:
+    - { user: root, path: /root }
+    - { user: "{{ username_on_the_host }}", path: "/home/{{ username_on_the_host }}" }
+
+- name: Configure powerlevel10k
+  template:
+    src: ../templates/zsh/p10k.zsh.j2
+    dest: "{{ item.path }}/.p10k.zsh"
+    owner: "{{ item.user }}"
+    group: "{{ item.user }}"
+    mode: '0644'
+  with_items:
+    - { user: root, path: /root }
+    - { user: "{{ username_on_the_host }}", path: "/home/{{ username_on_the_host }}" }

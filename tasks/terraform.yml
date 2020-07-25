@@ -1,0 +1,28 @@
+---
+- name: Check if terraform is already installed
+  stat:
+    path: /usr/local/bin/terraform
+  register: terraform
+
+- name: "Download terraform version {{ terraform_version }}"
+  get_url:
+    url: "https://releases.hashicorp.com/terraform/{{ terraform_version}}/terraform_{{ terraform_version}}_linux_amd64.zip"
+    dest: /tmp/terraform.zip
+  when: not terraform.stat.exists
+
+- name: Extract terraform binary
+  unarchive:
+    src: /tmp/terraform.zip
+    dest: /tmp
+    remote_src: yes
+  when: not terraform.stat.exists
+
+- name: Copy terraform binary to /usr/local/bin
+  copy:
+    src: /tmp/terraform
+    dest: /usr/local/bin/terraform
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: 0700
+    remote_src: yes
+  when: not terraform.stat.exists

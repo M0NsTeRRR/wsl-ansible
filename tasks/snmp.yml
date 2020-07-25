@@ -1,0 +1,5 @@
+---
+- name: Install snmp
+  apt:
+    name: snmp
+    state: present

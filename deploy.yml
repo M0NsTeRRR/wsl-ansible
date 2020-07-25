@@ -1,0 +1,50 @@
+---
+- name: Provision WSL
+  hosts: localhost
+  connection: local
+  become: true
+  vars:
+    username_on_the_host: ludovic
+  tasks:
+    - name: Include vars.yml
+      include_vars: vars.yml
+
+    - name: Update and upgrade all packages
+      apt:
+        upgrade: 'yes'
+        update_cache: 'yes'
+    
+    - name: Install pip3
+      apt:
+        name: python3-pip
+        state: present
+
+    - name: Include sudoers
+      include_tasks: tasks/sudoers.yml
+
+    - name: Include ntp
+      include_tasks: tasks/ntp.yml
+
+    - name: Include snmp
+      include_tasks: tasks/snmp.yml
+
+    - name: Include nmap
+      include_tasks: tasks/nmap.yml
+
+    - name: Include go
+      include_tasks: tasks/go.yml  
+
+    - name: Include packer
+      include_tasks: tasks/packer.yml
+
+    - name: Include terraform
+      include_tasks: tasks/terraform.yml
+
+    - name: Include terragrunt
+      include_tasks: tasks/terragrunt.yml
+
+    - name: Include apt-cache
+      include_tasks: tasks/apt-cache.yml
+
+    - name: Include zsh
+      include_tasks: tasks/zsh.yml  
