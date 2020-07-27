@@ -83,6 +83,9 @@ generateHosts = true
 generateResolvConf = true
 ```
 
+Create `~/.ssh` folder for root and user  
+Add private and public keys
+
 #  Run
 The playbook must be runned as user (not root)  
 `ansible-playbook -i localhost, deploy.yml --ask-become-pass`  

@@ -2,7 +2,6 @@
 plugins=(
   colored-man-pages
   colorize
-  ssh-agent
   git
   docker
   docker-compose
@@ -36,10 +35,6 @@ HISTFILE=~/.zsh_history
 autoload -Uz compinit
 compinit
 
-# ssh-agent plugin setting
-zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent lifetime
-
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
@@ -61,3 +56,6 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+eval $(ssh-agent)
+ssh-add ~/.ssh/id_rsa
