@@ -22,6 +22,9 @@
     - name: Include sudoers
       include_tasks: tasks/sudoers.yml
 
+    - name: Include sshpass
+      include_tasks: tasks/sshpass.yml
+
     - name: Include unzip
       include_tasks: tasks/unzip.yml
 
