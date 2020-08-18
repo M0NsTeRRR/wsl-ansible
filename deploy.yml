@@ -43,6 +43,9 @@
     - name: Include packer
       include_tasks: tasks/packer.yml
 
+    - name: Include packer-builder-arm
+      include_tasks: tasks/packer-builder-arm.yml
+
     - name: Include terraform
       include_tasks: tasks/terraform.yml
 

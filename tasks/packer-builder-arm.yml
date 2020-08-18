@@ -1,0 +1,35 @@
+---
+- name: Install required packages
+  apt:
+    pkg:
+      - qemu 
+      - binfmt-support 
+      - qemu-user-static
+    state: present
+
+- name: Check if packer-builder-arm is already installed
+  stat:
+    path: /usr/local/bin/packer-builder-arm
+  register: packer_builder_arm
+
+- name: Git clone
+  git:
+    repo: https://github.com/mkaczanowski/packer-builder-arm.git
+    dest: /tmp/packer-builder-arm
+  when: not packer-builder-arm.stat.exists
+
+- name: Compile sources
+  shell: /usr/bin/go build -o /tmp/packer-builder-arm
+  args:
+    chdir: /tmp/packer-builder-arm
+  when: not packer-builder-arm.stat.exists
+
+- name: Copy packer-builder-arm binary to /usr/local/bin
+  copy:
+    src: /tmp/packer-builder-arm/packer-builder-arm
+    dest: /usr/local/bin/packer-builder-arm
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: 0700
+    remote_src: yes
+  when: not packer-builder-arm.stat.exists
