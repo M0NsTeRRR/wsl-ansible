@@ -1,0 +1,5 @@
+---
+- name: Install dos2unix
+  apt:
+    name: dos2unix
+    state: present
