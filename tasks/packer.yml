@@ -1,28 +1,18 @@
 ---
-- name: Check if packer is already installed
-  stat:
-    path: /usr/local/bin/packer
-  register: packer
+- name: Add Packer Apt signing key
+  apt_key:
+    url: "https://apt.releases.hashicorp.com/gpg"
+    state: present
+  retries: 3
+  delay: 3
 
-- name: "Download packer version {{ packer_version }}"
-  get_url:
-    url: "https://releases.hashicorp.com/packer/{{ packer_version}}/packer_{{ packer_version}}_linux_amd64.zip"
-    dest: /tmp/packer.zip
-  when: not packer.stat.exists
+- name: Add Packer Apt repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release|lower }} main"
+    state: present
+    filename: hashicorp
 
-- name: Extract packer binary
-  unarchive:
-    src: /tmp/packer.zip
-    dest: /tmp
-    remote_src: yes
-  when: not packer.stat.exists
-
-- name: Copy packer binary to /usr/local/bin
-  copy:
-    src: /tmp/packer
-    dest: /usr/local/bin/packer
-    owner: "{{ username_on_the_host }}"
-    group: "{{ username_on_the_host }}"
-    mode: 0700
-    remote_src: yes
-  when: not packer.stat.exists
+- name: Install Packer
+  apt:
+    name: packer
+    state: present

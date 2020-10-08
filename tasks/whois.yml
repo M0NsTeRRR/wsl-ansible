@@ -1,0 +1,5 @@
+---
+- name: Install whois
+  apt:
+    name: whois
+    state: present
