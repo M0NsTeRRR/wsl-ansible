@@ -64,9 +64,15 @@ Replace the scheme with this
 
 Add keybindings
 ```
-{ "command": { "action": "splitPane", "split": "vertical" }, "keys": "alt+shift+numpad_add" },
+{ "command": { "action": "splitPane", "split": "vertical" }, "keys": "alt+shift+numpad_plus" },
 { "command": { "action": "splitPane", "split": "horizontal" }, "keys": "alt+shift+numpad_minus" },
-{ "command": { "action": "splitPane", "split": "auto" }, "keys": "alt+shift+|" }
+{ "command": { "action": "splitPane", "split": "auto" }, "keys": "alt+shift+|" },
+{ "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+down" },
+{ "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+left" },
+{ "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+right" },
+{ "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+up" },
+{ "command": "closePane", "keys": "alt+shift+w" },
+{ "command": "find", "keys": "ctrl+f" }
 ```
 
 ## WSL
