@@ -71,7 +71,7 @@ Add keybindings
 { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+left" },
 { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+right" },
 { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+up" },
-{ "command": "closePane", "keys": "alt+shift+w" },
+{ "command": "closePane", "keys": "alt+numpad_minus" },
 { "command": "find", "keys": "ctrl+f" }
 ```
 
