@@ -89,8 +89,8 @@ generateHosts = true
 generateResolvConf = true
 ```
 
-Create `~/.ssh` folder for root and user  
-Add private and public keys
+Create `~/.ssh` folder for root and the user
+Add all private and public keys to the folder
 
 #  Run
 The playbook must be runned as user (not root)  
