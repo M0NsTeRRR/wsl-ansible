@@ -1,12 +1,12 @@
 ---
-- name: Add Packer Apt signing key
+- name: Add Hashicorp Apt signing key
   apt_key:
     url: "https://apt.releases.hashicorp.com/gpg"
     state: present
   retries: 3
   delay: 3
 
-- name: Add Packer Apt repository
+- name: Add Hashicorp Apt repository
   apt_repository:
     repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release|lower }} main"
     state: present
