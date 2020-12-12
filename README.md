@@ -2,8 +2,8 @@ This is my my WSL configuration provisionned by ansible.
 
 # Requirements
 
-- WSL2 with Ubuntu (version >= 20.04)
-- Ansible (version >= 2.9.6)
+- WSL2 with Ubuntu (version >= 20.04.1)
+- Ansible (version >= 2.9)
 - Windows Terminal
 
 # Configure
@@ -89,11 +89,11 @@ generateHosts = true
 generateResolvConf = true
 ```
 
-Create `~/.ssh` folder for root and the user
+Create `~/.ssh` folder for root and `lortega` user
 Add all private and public keys to the folder
 
 #  Run
-The playbook must be runned as user (not root)  
+The playbook must be runned as `lortega` user (not root)
 `ansible-playbook -i localhost, deploy.yml --ask-become-pass`  
 
 # Credits
