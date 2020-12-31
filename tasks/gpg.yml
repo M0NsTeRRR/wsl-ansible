@@ -1,0 +1,5 @@
+---
+- name: Install gnupg
+  apt:
+    name: gnupg
+    state: present

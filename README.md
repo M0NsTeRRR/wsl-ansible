@@ -96,6 +96,14 @@ Add all private and public keys to the folder
 The playbook must be runned as `lortega` user (not root)
 `ansible-playbook -i localhost, deploy.yml --ask-become-pass`  
 
+Import GPG keys
+```
+gpg --import < priv.asc
+gpg --import < pub.asc
+gpg --import-ownertrust < trust.asc
+cp *.conf ~/.gnupg
+```
+
 # Credits
 
 Copyright © Ludovic Ortega, 2020
