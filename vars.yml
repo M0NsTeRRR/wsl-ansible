@@ -1,3 +1,8 @@
 ---
+git:
+  user:
+    name: Ludovic Ortega
+    email: ludovic.ortega@adminafk.fr
+    signingkey: 81E390A404C7D583A6D6958E22F86C9B1BEC401D
 terraform_version: 0.13.5
 terragrunt_version: 0.26.2

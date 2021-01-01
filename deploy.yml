@@ -13,7 +13,7 @@
       apt:
         upgrade: 'yes'
         update_cache: 'yes'
-    
+
     - name: Install pip3
       apt:
         name: python3-pip
@@ -22,8 +22,14 @@
     - name: Include dos2unix
       include_tasks: tasks/dos2unix.yml
 
+    - name: Include git
+      include_tasks: tasks/git.yml
+
     - name: Include go
-      include_tasks: tasks/go.yml 
+      include_tasks: tasks/go.yml
+
+    - name: Include gpg
+      include_tasks: tasks/gpg.yml
 
     - name: Include nmap
       include_tasks: tasks/nmap.yml
@@ -39,7 +45,7 @@
 
     - name: Include snmp
       include_tasks: tasks/snmp.yml
-    
+
     - name: Include sshpass
       include_tasks: tasks/sshpass.yml
 
@@ -59,4 +65,4 @@
       include_tasks: tasks/whois.yml
 
     - name: Include zsh
-      include_tasks: tasks/zsh.yml  
+      include_tasks: tasks/zsh.yml
