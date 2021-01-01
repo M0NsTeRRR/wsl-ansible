@@ -10,11 +10,8 @@
 
 - name: Set zsh as default shell
   user:
-    name: "{{ item }}"
+    name: "{{ username_on_the_host }}"
     shell: /bin/zsh
-  with_items:
-    - root
-    - "{{ username_on_the_host }}"
 
 - name: Check if oh-my-zsh is already installed on root
   stat:
@@ -33,20 +30,10 @@
     mode: a+x
   when: not oh_my_zsh_root.stat.exists or not oh_my_zsh.stat.exists
 
-- name: Install oh-my-zsh on root account
-  command: sh /tmp/install.sh
-  when: not oh_my_zsh_root.stat.exists
-
 - name: "Install oh-my-zsh on {{ username_on_the_host }} account"
   command: sh /tmp/install.sh
   become_user: "{{ username_on_the_host }}"
   when: not oh_my_zsh.stat.exists
-
-- name: Git clone powerlevel10k on root account
-  git:
-    repo: https://github.com/romkatv/powerlevel10k.git
-    dest: /root/powerlevel10k
-    depth: 1
 
 - name: "Git clone powerlevel10k on {{ username_on_the_host }} account"
   git:
@@ -57,21 +44,15 @@
 - name: Configure zsh
   template:
     src: ../templates/zsh/zshrc.j2
-    dest: "{{ item.path }}/.zshrc"
-    owner: "{{ item.user }}"
-    group: "{{ item.user }}"
+    dest: "/home/{{ username_on_the_host }}/.zshrc"
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
     mode: '0644'
-  with_items:
-    - { user: root, path: /root }
-    - { user: "{{ username_on_the_host }}", path: "/home/{{ username_on_the_host }}" }
 
 - name: Configure powerlevel10k
   template:
     src: ../templates/zsh/p10k.zsh.j2
-    dest: "{{ item.path }}/.p10k.zsh"
-    owner: "{{ item.user }}"
-    group: "{{ item.user }}"
+    dest: "/home/{{ username_on_the_host }}/.p10k.zsh"
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
     mode: '0644'
-  with_items:
-    - { user: root, path: /root }
-    - { user: "{{ username_on_the_host }}", path: "/home/{{ username_on_the_host }}" }
