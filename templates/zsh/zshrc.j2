@@ -71,5 +71,6 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export GPG_TTY=$TTY
-eval $(ssh-agent)
-ssh-add ~/.ssh/homelab
+
+/usr/bin/keychain --nogui $HOME/.ssh/homelab
+source $HOME/.keychain/$(hostname)-sh
