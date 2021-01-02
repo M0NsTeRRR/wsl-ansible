@@ -72,7 +72,9 @@ Add keybindings
 { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+right" },
 { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+up" },
 { "command": "closePane", "keys": "alt+numpad_minus" },
-{ "command": "find", "keys": "ctrl+f" }
+{ "command": "find", "keys": "ctrl+f" },
+{ "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+c" },
+{ "command": "paste", "keys": "ctrl+v" }
 ```
 
 ## WSL
