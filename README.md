@@ -103,7 +103,6 @@ Import GPG keys
 gpg --import < priv.asc
 gpg --import < pub.asc
 gpg --import-ownertrust < trust.asc
-cp *.conf ~/.gnupg
 ```
 
 # Credits
