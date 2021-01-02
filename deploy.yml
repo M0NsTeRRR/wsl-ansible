@@ -28,6 +28,9 @@
     - name: Include go
       include_tasks: tasks/go.yml
 
+   - name: Include keychain
+      include_tasks: tasks/keychain.yml
+
     - name: Include gpg
       include_tasks: tasks/gpg.yml
 
