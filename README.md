@@ -91,7 +91,7 @@ generateHosts = true
 generateResolvConf = true
 ```
 
-Create `~/.ssh` folder for root and `lortega` user
+Create `~/.ssh` folder for `lortega` user
 Add all private and public keys to the folder
 
 #  Run
