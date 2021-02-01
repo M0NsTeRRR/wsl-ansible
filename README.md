@@ -77,6 +77,14 @@ Add keybindings
 { "command": "paste", "keys": "ctrl+v" }
 ```
 
+Disable wsl bell sound in profiles -> defaults
+```
+{
+    // Put settings here that you want to apply to all profiles.
+    "bellStyle": "none"
+}
+```
+
 ## WSL
 Create `/etc/wsl.conf`  
 ```
