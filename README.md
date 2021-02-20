@@ -2,8 +2,8 @@ This is my my WSL configuration provisionned by ansible.
 
 # Requirements
 
-- WSL2 with Ubuntu (version >= 20.04.1)
-- Ansible (version >= 2.9)
+- WSL2 with Ubuntu (version >= 20.04.2)
+- Ansible (version >= 2.10
 - Windows Terminal
 
 # Configure
