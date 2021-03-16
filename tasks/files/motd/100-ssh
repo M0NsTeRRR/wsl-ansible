@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo -e "
+  SSH helper
+
+  no matching key exchange method found. Their offer: diffie-hellman-group1-sha1
+  => -o KexAlgorithms=diffie-hellman-group1-sha1
+
+  no matching cipher found. Their offer: aes256-cbc
+  => -c aes128-cbc
+
+  no matching mac found. Their offer: hmac-sha1
+  => -m hmac-sha1
+
+  no hostkey alg
+  => -o HostKeyAlgorithms=ssh-rsa
+"

@@ -69,3 +69,6 @@
 
     - name: Include zsh
       include_tasks: tasks/zsh.yml
+
+    - name: Include motd
+      include_tasks: tasks/motd.yml
