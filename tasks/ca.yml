@@ -8,6 +8,7 @@
   copy:
     src: "{{ item }}"
     dest: "/usr/local/share/ca-certificates/{{ item | basename }}.crt"
+    mode: 0644
   with_fileglob: ./files/*
 
 - name: update ca-certificates

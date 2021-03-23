@@ -53,7 +53,7 @@
 
 - name: Configure zsh
   template:
-    src: ../templates/zsh/zshrc.j2
+    src: zsh/zshrc.j2
     dest: "/home/{{ username_on_the_host }}/.zshrc"
     owner: "{{ username_on_the_host }}"
     group: "{{ username_on_the_host }}"
@@ -61,7 +61,7 @@
 
 - name: Configure powerlevel10k
   template:
-    src: ../templates/zsh/p10k.zsh.j2
+    src: zsh/p10k.zsh.j2
     dest: "/home/{{ username_on_the_host }}/.p10k.zsh"
     owner: "{{ username_on_the_host }}"
     group: "{{ username_on_the_host }}"
