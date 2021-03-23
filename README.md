@@ -103,6 +103,8 @@ Create `~/.ssh` folder for `lortega` user
 Add all private and public keys to the folder
 
 #  Run
+Put CA certificates in `files/ca`
+
 The playbook must be runned as `lortega` user (not root)
 `ansible-playbook -i localhost, deploy.yml --ask-become-pass`  
 

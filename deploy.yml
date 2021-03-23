@@ -19,6 +19,9 @@
         name: python3-pip
         state: present
 
+    - name: Include CA
+      include_tasks: tasks/ca.yml
+
     - name: Include dos2unix
       include_tasks: tasks/dos2unix.yml
 
@@ -33,6 +36,9 @@
 
     - name: Include gpg
       include_tasks: tasks/gpg.yml
+
+    - name: Include motd
+      include_tasks: tasks/motd.yml
 
     - name: Include nmap
       include_tasks: tasks/nmap.yml
@@ -69,6 +75,3 @@
 
     - name: Include zsh
       include_tasks: tasks/zsh.yml
-
-    - name: Include motd
-      include_tasks: tasks/motd.yml
