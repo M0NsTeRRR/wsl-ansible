@@ -1,5 +1,7 @@
 This is my my WSL configuration provisionned by ansible.
 
+![Ansible Lint](https://github.com/M0NsTeRRR/wsl-ansible/workflows/Ansible%20Lint/badge.svg)
+
 # Requirements
 
 - WSL2 with Ubuntu (version >= 20.04.2)
