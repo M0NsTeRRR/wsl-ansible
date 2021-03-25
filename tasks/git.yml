@@ -1,11 +1,11 @@
 ---
 - name: Install git
-  apt:
+  ansible.builtin.apt:
     name: git
     state: present
 
 - name: Setup default git configuraiton
-  git_config:
+  community.general.git_config:
     name: "{{ item.name }}"
     scope: global
     value: "{{ item.value }}"

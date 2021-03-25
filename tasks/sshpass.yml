@@ -1,5 +1,5 @@
 ---
 - name: Install sshpass
-  apt:
+  ansible.builtin.apt:
     name: sshpass
     state: present

@@ -1,5 +1,5 @@
 ---
 - name: Install snmp
-  apt:
+  ansible.builtin.apt:
     name: snmp
     state: present

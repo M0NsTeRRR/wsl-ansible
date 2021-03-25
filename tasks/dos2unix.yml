@@ -1,5 +1,5 @@
 ---
 - name: Install dos2unix
-  apt:
+  ansible.builtin.apt:
     name: dos2unix
     state: present

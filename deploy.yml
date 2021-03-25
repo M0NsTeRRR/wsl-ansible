@@ -7,71 +7,71 @@
     username_on_the_host: lortega
   tasks:
     - name: Include vars.yml
-      include_vars: vars.yml
+      ansible.builtin.include_vars: vars.yml
 
     - name: Update and upgrade all packages
-      apt:
+      ansible.builtin.apt:
         upgrade: 'yes'
         update_cache: 'yes'
 
     - name: Install pip3
-      apt:
+      ansible.builtin.apt:
         name: python3-pip
         state: present
 
     - name: Include CA
-      include_tasks: tasks/ca.yml
+      ansible.builtin.include_tasks: tasks/ca.yml
 
     - name: Include dos2unix
-      include_tasks: tasks/dos2unix.yml
+      ansible.builtin.include_tasks: tasks/dos2unix.yml
 
     - name: Include git
-      include_tasks: tasks/git.yml
+      ansible.builtin.include_tasks: tasks/git.yml
 
     - name: Include go
-      include_tasks: tasks/go.yml
+      ansible.builtin.include_tasks: tasks/go.yml
 
     - name: Include keychain
-      include_tasks: tasks/keychain.yml
+      ansible.builtin.include_tasks: tasks/keychain.yml
 
     - name: Include gpg
-      include_tasks: tasks/gpg.yml
+      ansible.builtin.include_tasks: tasks/gpg.yml
 
     - name: Include motd
-      include_tasks: tasks/motd.yml
+      ansible.builtin.include_tasks: tasks/motd.yml
 
     - name: Include nmap
-      include_tasks: tasks/nmap.yml
+      ansible.builtin.include_tasks: tasks/nmap.yml
 
     - name: Include ntp
-      include_tasks: tasks/ntp.yml
+      ansible.builtin.include_tasks: tasks/ntp.yml
 
     - name: Include packer-builder-arm
-      include_tasks: tasks/packer-builder-arm.yml
+      ansible.builtin.include_tasks: tasks/packer-builder-arm.yml
 
     - name: Include packer
-      include_tasks: tasks/packer.yml
+      ansible.builtin.include_tasks: tasks/packer.yml
 
     - name: Include snmp
-      include_tasks: tasks/snmp.yml
+      ansible.builtin.include_tasks: tasks/snmp.yml
 
     - name: Include sshpass
-      include_tasks: tasks/sshpass.yml
+      ansible.builtin.include_tasks: tasks/sshpass.yml
 
     - name: Include sudoers
-      include_tasks: tasks/sudoers.yml
+      ansible.builtin.include_tasks: tasks/sudoers.yml
 
     - name: Include terraform
-      include_tasks: tasks/terraform.yml
+      ansible.builtin.include_tasks: tasks/terraform.yml
 
     - name: Include terragrunt
-      include_tasks: tasks/terragrunt.yml
+      ansible.builtin.include_tasks: tasks/terragrunt.yml
 
     - name: Include unzip
-      include_tasks: tasks/unzip.yml
+      ansible.builtin.include_tasks: tasks/unzip.yml
 
     - name: Include whois
-      include_tasks: tasks/whois.yml
+      ansible.builtin.include_tasks: tasks/whois.yml
 
     - name: Include zsh
-      include_tasks: tasks/zsh.yml
+      ansible.builtin.include_tasks: tasks/zsh.yml

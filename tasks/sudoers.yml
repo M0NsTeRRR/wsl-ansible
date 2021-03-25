@@ -1,6 +1,6 @@
 ---
 - name: "Create /etc/sudoers.d/{{ username_on_the_host }}"
-  template:
+  ansible.builtin.template:
     src: sudoers/sudoer.j2
     dest: "/etc/sudoers.d/{{ username_on_the_host }}"
     mode: '0440'

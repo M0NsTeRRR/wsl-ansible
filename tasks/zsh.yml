@@ -1,58 +1,58 @@
 ---
 - name: Install required python package
-  pip:
+  ansible.builtin.pip:
     name: pexpect
 
 - name: Install zsh
-  apt:
+  ansible.builtin.apt:
     name: zsh
     state: present
 
 - name: Set zsh as default shell
-  user:
+  ansible.builtin.user:
     name: "{{ username_on_the_host }}"
     shell: /bin/zsh
 
 - name: Check if oh-my-zsh is already installed on root
-  stat:
+  ansible.builtin.stat:
     path: /root/.oh-my-zsh
   register: oh_my_zsh_root
 
 - name: "Check if oh-my-zsh is already installed on {{ username_on_the_host }}"
-  stat:
+  ansible.builtin.stat:
     path: "/home/{{ username_on_the_host }}/.oh-my-zsh"
   register: oh_my_zsh
 
 - name: Download oh-my-zsh installer
-  get_url:
+  ansible.builtin.get_url:
     url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
     dest: /tmp/install.sh
     mode: a+x
   when: not oh_my_zsh_root.stat.exists or not oh_my_zsh.stat.exists
 
 - name: "Install oh-my-zsh on {{ username_on_the_host }} account"
-  command: sh /tmp/install.sh
+  ansible.builtin.command: sh /tmp/install.sh
   become_user: "{{ username_on_the_host }}"
   when: not oh_my_zsh.stat.exists
 
 - name: "Git clone powerlevel10k on {{ username_on_the_host }} account"
-  git:
+  ansible.builtin.git:
     repo: https://github.com/romkatv/powerlevel10k.git
     dest: "/home/{{ username_on_the_host }}/powerlevel10k"
     depth: 1
 
 - name: "Git clone zsh-autosuggestions on {{ username_on_the_host }} account"
-  git:
+  ansible.builtin.it:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: "/home/{{ username_on_the_host }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 
 - name: "Git clone zsh-syntax-highlighting on {{ username_on_the_host }} account"
-  git:
+  ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting
     dest: "/home/{{ username_on_the_host }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 
 - name: Configure zsh
-  template:
+  ansible.builtin.template:
     src: zsh/zshrc.j2
     dest: "/home/{{ username_on_the_host }}/.zshrc"
     owner: "{{ username_on_the_host }}"
@@ -60,7 +60,7 @@
     mode: '0644'
 
 - name: Configure powerlevel10k
-  template:
+  ansible.builtin.template:
     src: zsh/p10k.zsh.j2
     dest: "/home/{{ username_on_the_host }}/.p10k.zsh"
     owner: "{{ username_on_the_host }}"
