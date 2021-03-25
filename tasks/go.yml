@@ -1,5 +1,19 @@
 ---
+- name: Add go Apt signing key
+  ansible.builtin.apt_key:
+    id: "52b59b1571a79dbc054901c0f6bc817356a3d45e"
+    url: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x52b59b1571a79dbc054901c0f6bc817356a3d45e"
+    state: present
+  retries: 3
+  delay: 3
+
+- name: Add go repository
+  ansible.builtin.apt_repository:
+    repo: "ppa:longsleep/golang-backports"
+    state: present
+    filename: golang
+
 - name: Install go
-  apt:
-    name: golang
+  ansible.builtin.apt:
+    name: golang-go
     state: present
