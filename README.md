@@ -107,6 +107,8 @@ Add all private and public keys to the folder
 #  Run
 Put CA certificates in `files/ca`
 
+Install ansible galaxy dependencies `ansible-galaxy install -r requirements.yml`
+
 The playbook must be runned as `lortega` user (not root)
 `ansible-playbook -i localhost, deploy.yml --ask-become-pass`  
 

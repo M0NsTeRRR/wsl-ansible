@@ -58,6 +58,9 @@
     - name: Include snmp
       ansible.builtin.include_tasks: tasks/snmp.yml
 
+    - name: Include ssh_config
+      ansible.builtin.include_tasks: tasks/ssh_config.yml
+
     - name: Include sshpass
       ansible.builtin.include_tasks: tasks/sshpass.yml
 
