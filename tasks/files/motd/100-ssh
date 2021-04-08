@@ -12,6 +12,6 @@ echo -e "
   no matching mac found. Their offer: hmac-sha1
   => -m hmac-sha1
 
-  no hostkey alg
-  => -o HostKeyAlgorithms=ssh-rsa
+  no matching host key type found. Their offer: ssh-dss
+  => -o HostKeyAlgorithms=ssh-dss
 "
