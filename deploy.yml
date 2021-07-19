@@ -34,6 +34,9 @@
     - name: Include go
       ansible.builtin.include_tasks: tasks/go.yml
 
+    - name: Include rust
+      ansible.builtin.include_tasks: tasks/rust.yml
+
     - name: Include keychain
       ansible.builtin.include_tasks: tasks/keychain.yml
 

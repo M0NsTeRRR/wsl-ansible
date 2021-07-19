@@ -1,0 +1,9 @@
+---
+- name: Check is rustup installed
+  ansible.builtin.shell: command -v rustup >/dev/null 2>&1
+  register: is_rustup_exist
+  ignore_errors: yes
+
+- name: Install rust
+  ansible.builtin.shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
+  when: is_rustup_exist.rc == 1
