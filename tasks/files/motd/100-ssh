@@ -1,17 +1,17 @@
 #!/bin/bash
 
 echo -e "
-  SSH helper
+  \033[0;35mSSH helper\e[0m
 
   no matching key exchange method found. Their offer: diffie-hellman-group1-sha1
-  => -o KexAlgorithms=diffie-hellman-group1-sha1
+  => \033[0;32m-o KexAlgorithms=diffie-hellman-group1-sha1\e[0m
 
   no matching cipher found. Their offer: aes256-cbc
-  => -c aes128-cbc
+  => \033[0;32m-c aes128-cbc\e[0m
 
   no matching mac found. Their offer: hmac-sha1
-  => -m hmac-sha1
+  => \033[0;32m-m hmac-sha1\e[0m
 
   no matching host key type found. Their offer: ssh-dss
-  => -o HostKeyAlgorithms=ssh-dss
+  => \033[0;32m-o HostKeyAlgorithms=ssh-dss\e[0m
 "
