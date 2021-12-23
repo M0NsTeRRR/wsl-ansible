@@ -5,7 +5,7 @@ This is my my WSL configuration provisionned by ansible.
 # Requirements
 
 - WSL2 with Ubuntu (version >= 20.04.2)
-- Ansible (version >= 2.10
+- Ansible (version >= 2.12)
 - Windows Terminal
 
 # Configure
@@ -87,6 +87,9 @@ Disable wsl bell sound in profiles -> defaults
 }
 ```
 
+## Powershell
+Set `lortega` as default user when opening terminal `ubuntu config --default-user lortega`
+
 ## WSL
 Create `/etc/wsl.conf`  
 ```
@@ -101,10 +104,13 @@ generateHosts = true
 generateResolvConf = true
 ```
 
-Create `~/.ssh` folder for `lortega` user
-Add all private and public keys to the folder
+Create `~/.ssh` folder for `lortega` user  
+Add all private and public keys to the folder  
+Add `lortega` to sudoers  
 
 #  Run
+Update `vars.yml` if needed
+
 Put CA certificates in `files/ca`
 
 Install ansible galaxy dependencies `ansible-galaxy install -r requirements.yml`

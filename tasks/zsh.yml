@@ -42,7 +42,7 @@
     depth: 1
 
 - name: "Git clone zsh-autosuggestions on {{ username_on_the_host }} account"
-  ansible.builtin.it:
+  ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: "/home/{{ username_on_the_host }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 
