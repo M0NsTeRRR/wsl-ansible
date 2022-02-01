@@ -1,0 +1,5 @@
+---
+- name: Install Restic
+  ansible.builtin.apt:
+    name: restic
+    state: present

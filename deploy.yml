@@ -58,6 +58,9 @@
     - name: Include packer
       ansible.builtin.include_tasks: tasks/packer.yml
 
+    - name: Include restic
+      ansible.builtin.include_tasks: tasks/restic.yml
+
     - name: Include snmp
       ansible.builtin.include_tasks: tasks/snmp.yml
 
