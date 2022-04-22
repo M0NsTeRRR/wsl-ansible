@@ -103,7 +103,7 @@ generateResolvConf = true
 
 Create `~/.ssh` folder for `lortega` user  
 Add all private and public keys to the folder  
-Add `lortega ALL=(ALL) NOPASSWD: ALL` to `/etc/sudoers`  
+Add `lortega` to sudoers  
 
 #  Run
 Update `vars.yml` if needed
