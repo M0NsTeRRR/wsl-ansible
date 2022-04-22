@@ -4,7 +4,7 @@ This is my my WSL configuration provisionned by ansible.
 
 # Requirements
 
-- WSL2 with Ubuntu (version >= 20.04.2)
+- WSL2 with Ubuntu (version >= 22.04)
 - Ansible (version >= 2.12)
 - Windows Terminal
 
@@ -87,9 +87,6 @@ Disable wsl bell sound in profiles -> defaults
 }
 ```
 
-## Powershell
-Set `lortega` as default user when opening terminal `ubuntu config --default-user lortega`
-
 ## WSL
 Create `/etc/wsl.conf`  
 ```
@@ -106,7 +103,7 @@ generateResolvConf = true
 
 Create `~/.ssh` folder for `lortega` user  
 Add all private and public keys to the folder  
-Add `lortega` to sudoers  
+Add `lortega ALL=(ALL) NOPASSWD: ALL` to `/etc/sudoers`  
 
 #  Run
 Update `vars.yml` if needed
