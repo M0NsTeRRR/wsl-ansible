@@ -6,10 +6,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - name: copy .ansible-lint
+      shell: bash
+      run: |
+        cp .ansible-lint .
     - name: Lint Ansible Playbook
-      uses: ansible/ansible-lint-action@master
-      with:
-        targets: |
-           deploy.yml
-        args: "-x 204 -x 301 -x 305 -x 401"
+      uses: ansible/ansible-lint-action@main
