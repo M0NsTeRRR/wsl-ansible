@@ -6,4 +6,4 @@
     line: "{{ item.line }}"
     state: "present"
   with_items:
-      - { regexp: '^(#   )?VerifyHostKeyDNS', line: 'VerifyHostKeyDNS ask' }
+    - {regexp: '^(#   )?VerifyHostKeyDNS', line: 'VerifyHostKeyDNS ask'}

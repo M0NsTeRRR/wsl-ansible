@@ -3,7 +3,7 @@
   ansible.builtin.find:
     path: /etc/update-motd.d
     file_type: file
-    recurse: yes
+    recurse: true
   register: motd_files
 
 - name: Remove executions of all motd files

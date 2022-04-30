@@ -40,16 +40,19 @@
     repo: https://github.com/romkatv/powerlevel10k.git
     dest: "/home/{{ username_on_the_host }}/powerlevel10k"
     depth: 1
+    version: HEAD
 
 - name: "Git clone zsh-autosuggestions on {{ username_on_the_host }} account"
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: "/home/{{ username_on_the_host }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    version: HEAD
 
 - name: "Git clone zsh-syntax-highlighting on {{ username_on_the_host }} account"
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting
     dest: "/home/{{ username_on_the_host }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    version: HEAD
 
 - name: Configure zsh
   ansible.builtin.template:

@@ -16,6 +16,7 @@
   ansible.builtin.git:
     repo: https://github.com/mkaczanowski/packer-builder-arm.git
     dest: /tmp/packer-builder-arm
+    version: HEAD
   when: not packer_builder_arm.stat.exists
 
 - name: Compile sources
@@ -31,5 +32,5 @@
     owner: "{{ username_on_the_host }}"
     group: "{{ username_on_the_host }}"
     mode: 0700
-    remote_src: yes
+    remote_src: true
   when: not packer_builder_arm.stat.exists

@@ -3,6 +3,7 @@
   ansible.builtin.get_url:
     url: https://apt.releases.hashicorp.com/gpg
     dest: /usr/share/keyrings/hashicorp.gpg
+    mode: 0644
 
 - name: Add Hashicorp Apt repository
   ansible.builtin.apt_repository:
