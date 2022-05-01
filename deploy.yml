@@ -33,6 +33,9 @@
 
     - name: Include go
       ansible.builtin.include_tasks: tasks/go.yml
+    
+    - name: Include python
+      ansible.builtin.include_tasks: tasks/python.yml
 
     - name: Include rust
       ansible.builtin.include_tasks: tasks/rust.yml
