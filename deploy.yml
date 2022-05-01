@@ -14,10 +14,8 @@
         upgrade: 'yes'
         update_cache: 'yes'
 
-    - name: Install pip3
-      ansible.builtin.apt:
-        name: python3-pip
-        state: present
+    - name: Include python
+      ansible.builtin.include_tasks: tasks/python.yml
 
     - name: Include bat
       ansible.builtin.include_tasks: tasks/bat.yml
@@ -33,9 +31,6 @@
 
     - name: Include go
       ansible.builtin.include_tasks: tasks/go.yml
-    
-    - name: Include python
-      ansible.builtin.include_tasks: tasks/python.yml
 
     - name: Include rust
       ansible.builtin.include_tasks: tasks/rust.yml
