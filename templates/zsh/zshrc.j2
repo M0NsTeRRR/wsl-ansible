@@ -17,6 +17,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   ansible
+  poetry
 )
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
@@ -39,6 +40,9 @@ bindkey -e
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
+
+# Poetry autocompletion
+fpath+=~/.zfunc
 
 # Use modern completion system
 autoload -Uz compinit

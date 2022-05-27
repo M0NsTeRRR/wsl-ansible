@@ -8,6 +8,9 @@
     name: zsh
     state: present
 
+- name: Add poetry zsh function
+  ansible.builtin.command: poetry completions zsh > ~/.zfunc/_poetry
+
 - name: Set zsh as default shell
   ansible.builtin.user:
     name: "{{ username_on_the_host }}"

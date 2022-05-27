@@ -8,3 +8,14 @@
   ansible.builtin.apt:
     name: python3-venv
     state: present
+
+- name: Download poetry install script
+  ansible.builtin.get_url:
+    url: https://install.python-poetry.org
+    dest: /tmp/poetry.org
+
+- name: Install poetry with downloaded script
+  ansible.builtin.command: python3 /tmp/poetry.org
+
+- name: Update poetry to preview version
+  ansible.builtin.command: poetry self update --preview
