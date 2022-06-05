@@ -13,9 +13,12 @@
   ansible.builtin.get_url:
     url: https://install.python-poetry.org
     dest: /tmp/poetry.org
+    mode: 0744
 
 - name: Install poetry with downloaded script
   ansible.builtin.command: python3 /tmp/poetry.org
+  changed_when: false
 
 - name: Update poetry to preview version
   ansible.builtin.command: poetry self update --preview
+  changed_when: false
