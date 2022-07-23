@@ -1,9 +1,17 @@
 ---
-- name: Install rust
-  ansible.builtin.shell: |
-    set -o pipefail
-    curl https://sh.rustup.rs -sSf | sh -s -- -y
-  args:
-    executable: /bin/bash
-  register: result
-  changed_when: result.rc == 0
+- name: Check is rustup installed
+  ansible.builtin.shell: command -v rustup
+  register: is_rustup_exist
+  ignore_errors: yes
+
+- name: Download Installer
+  ansible.builtin.get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/sh.rustup.rs
+    mode: '0755'
+    force: 'yes'
+  when: is_rustup_exist is failed
+
+- name: Install rust/cargo
+  ansible.builtin.shell: /tmp/sh.rustup.rs -y
+  when: is_rustup_exist is failed
