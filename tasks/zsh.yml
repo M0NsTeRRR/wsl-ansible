@@ -8,10 +8,6 @@
     name: zsh
     state: present
 
-- name: Add poetry zsh function
-  ansible.builtin.command: poetry completions zsh > ~/.zfunc/_poetry
-  changed_when: false
-
 - name: Set zsh as default shell
   ansible.builtin.user:
     name: "{{ username_on_the_host }}"
@@ -34,42 +30,56 @@
     mode: a+x
   when: not oh_my_zsh_root.stat.exists or not oh_my_zsh.stat.exists
 
-- name: "Install oh-my-zsh on {{ username_on_the_host }} account"
+- name: "Install oh-my-zsh on specified account"
   ansible.builtin.command: sh /tmp/install.sh
   become_user: "{{ username_on_the_host }}"
   when: not oh_my_zsh.stat.exists
 
-- name: "Git clone powerlevel10k on {{ username_on_the_host }} account"
+- name: Git clone powerlevel10k on specified account
   ansible.builtin.git:
     repo: https://github.com/romkatv/powerlevel10k.git
     dest: "/home/{{ username_on_the_host }}/powerlevel10k"
     depth: 1
     version: HEAD
 
-- name: "Git clone zsh-autosuggestions on {{ username_on_the_host }} account"
+- name: Git clone zsh-autosuggestions on specified account
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: "/home/{{ username_on_the_host }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
     version: HEAD
 
-- name: "Git clone zsh-syntax-highlighting on {{ username_on_the_host }} account"
+- name: Git clone zsh-syntax-highlighting on specified account
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting
     dest: "/home/{{ username_on_the_host }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
     version: HEAD
 
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /home/{{ username_on_the_host }}/.oh-my-zsh/custom/plugins/poetry
+    state: directory
+    mode: '0755'
+
+- name: Add poetry zsh function
+  ansible.builtin.shell: $HOME/.local/bin/poetry completions zsh > /home/{{ username_on_the_host }}/.oh-my-zsh/custom/plugins/poetry/_poetry
+  changed_when: false
+
 - name: Configure zsh
   ansible.builtin.template:
     src: zsh/zshrc.j2
     dest: "/home/{{ username_on_the_host }}/.zshrc"
-    owner: "{{ username_on_the_host }}"
-    group: "{{ username_on_the_host }}"
     mode: '0644'
 
 - name: Configure powerlevel10k
   ansible.builtin.template:
     src: zsh/p10k.zsh.j2
     dest: "/home/{{ username_on_the_host }}/.p10k.zsh"
+    mode: '0644'
+
+- name: Recursively change ownership of a directory
+  ansible.builtin.file:
+    path: "/home/{{ username_on_the_host }}"
+    state: directory
+    recurse: yes
     owner: "{{ username_on_the_host }}"
     group: "{{ username_on_the_host }}"
-    mode: '0644'

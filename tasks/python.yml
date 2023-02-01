@@ -19,6 +19,6 @@
   ansible.builtin.command: python3 /tmp/poetry.org
   changed_when: false
 
-- name: Update poetry to preview version
-  ansible.builtin.command: poetry self update --preview
+- name: Update poetry to latest version
+  ansible.builtin.command: $HOME/.local/bin/poetry self update
   changed_when: false

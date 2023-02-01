@@ -2,12 +2,12 @@
 - name: Add Longsleep golang Apt signing key
   ansible.builtin.get_url:
     url: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x52b59b1571a79dbc054901c0f6bc817356a3d45e"
-    dest: /usr/share/keyrings/longsleep-golang.gpg
+    dest: /usr/share/keyrings/longsleep-golang.asc
     mode: 0644
 
 - name: Add Hashicorp Apt repository
   ansible.builtin.apt_repository:
-    repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/longsleep-golang.gpg] https://ppa.launchpadcontent.net/longsleep/golang-backports/ubuntu/ {{ ansible_distribution_release|lower }} main"
+    repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/longsleep-golang.asc] https://ppa.launchpadcontent.net/longsleep/golang-backports/ubuntu/ {{ ansible_distribution_release | lower }} main"
     state: present
     filename: golang
 

@@ -11,7 +11,7 @@
     mode: 0644
   with_fileglob: ./files/ca/*
 
-- name: update ca-certificates
+- name: Update ca-certificates
   ansible.builtin.command: /usr/sbin/update-ca-certificates
   retries: 3
   delay: 3
