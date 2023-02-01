@@ -68,8 +68,8 @@ Replace the scheme with this
 
 Add keybindings
 ```
-{ "command": { "action": "splitPane", "split": "vertical" }, "keys": "alt+shift+numpad_plus" },
-{ "command": { "action": "splitPane", "split": "horizontal" }, "keys": "alt+shift+numpad_minus" },
+{ "command": { "action": "splitPane", "split": "down" }, "keys": "alt+shift+numpad_plus" },
+{ "command": { "action": "splitPane", "split": "right" }, "keys": "alt+shift+numpad_minus" },
 { "command": { "action": "splitPane", "split": "auto" }, "keys": "alt+shift+|" },
 { "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+down" },
 { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+left" },
