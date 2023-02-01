@@ -80,6 +80,6 @@
   ansible.builtin.file:
     path: "/home/{{ username_on_the_host }}"
     state: directory
-    recurse: yes
+    recurse: true
     owner: "{{ username_on_the_host }}"
     group: "{{ username_on_the_host }}"
