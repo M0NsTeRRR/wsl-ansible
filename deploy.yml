@@ -38,6 +38,9 @@
     - name: Include keychain
       ansible.builtin.include_tasks: tasks/keychain.yml
 
+    - name: Include kubectl
+      ansible.builtin.include_tasks: tasks/kubectl.yml
+
     - name: Include gpg
       ansible.builtin.include_tasks: tasks/gpg.yml
 
