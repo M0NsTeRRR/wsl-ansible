@@ -1,5 +1,5 @@
 ---
 - name: Install ansible-lint
-  ansible.builtin.apt:
+- name: Install ansible-lint
+  ansible.builtin.pip:
     name: ansible-lint
-    state: present
