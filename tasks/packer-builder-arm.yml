@@ -31,6 +31,6 @@
     dest: /usr/local/bin/packer-builder-arm
     owner: "{{ username_on_the_host }}"
     group: "{{ username_on_the_host }}"
-    mode: 0700
+    mode: "0700"
     remote_src: true
   when: not packer_builder_arm.stat.exists

@@ -10,5 +10,5 @@
     dest: /usr/local/bin/terragrunt
     owner: "{{ username_on_the_host }}"
     group: "{{ username_on_the_host }}"
-    mode: 0700
+    mode: "0700"
   when: not terragrunt.stat.exists

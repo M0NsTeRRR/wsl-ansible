@@ -3,7 +3,7 @@
   ansible.builtin.get_url:
     url: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x52b59b1571a79dbc054901c0f6bc817356a3d45e"
     dest: /usr/share/keyrings/longsleep-golang.asc
-    mode: 0644
+    mode: "0644"
 
 - name: Add Hashicorp Apt repository
   ansible.builtin.apt_repository:

@@ -13,7 +13,7 @@
   ansible.builtin.get_url:
     url: https://install.python-poetry.org
     dest: /tmp/poetry.org
-    mode: 0744
+    mode: "0744"
 
 - name: Install poetry with downloaded script
   ansible.builtin.command: python3 /tmp/poetry.org
