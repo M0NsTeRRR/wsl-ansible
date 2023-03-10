@@ -17,13 +17,13 @@
     repo: https://github.com/mkaczanowski/packer-builder-arm.git
     dest: /tmp/packer-builder-arm
     version: HEAD
-  when: not packer_builder_arm.stat.exists
+  when: not packer_builder_arm.stat.exists or packer_builder_arm_force_install
 
 - name: Compile sources
   ansible.builtin.shell: /usr/bin/go build -o /tmp/packer-builder-arm
   args:
     chdir: /tmp/packer-builder-arm
-  when: not packer_builder_arm.stat.exists
+  when: not packer_builder_arm.stat.exists or packer_builder_arm_force_install
 
 - name: Copy packer-builder-arm binary to /usr/local/bin
   ansible.builtin.copy:
@@ -33,4 +33,4 @@
     group: "{{ username_on_the_host }}"
     mode: "0700"
     remote_src: true
-  when: not packer_builder_arm.stat.exists
+  when: not packer_builder_arm.stat.exists or packer_builder_arm_force_install

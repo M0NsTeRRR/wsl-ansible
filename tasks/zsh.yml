@@ -64,6 +64,10 @@
   ansible.builtin.shell: $HOME/.local/bin/poetry completions zsh > /home/{{ username_on_the_host }}/.oh-my-zsh/custom/plugins/poetry/_poetry
   changed_when: false
 
+- name: Add yq zsh function
+  ansible.builtin.shell: echo "autoload -U compinit; compinit" >> ~/.zshrc && yq shell-completion zsh > "${fpath[1]}/_yq"
+  changed_when: false
+
 - name: Configure zsh
   ansible.builtin.template:
     src: zsh/zshrc.j2
