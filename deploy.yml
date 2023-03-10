@@ -86,5 +86,8 @@
     - name: Include whois
       ansible.builtin.include_tasks: tasks/whois.yml
 
+    - name: Include yq
+      ansible.builtin.include_tasks: tasks/yq.yml
+
     - name: Include zsh
       ansible.builtin.include_tasks: tasks/zsh.yml

@@ -11,4 +11,4 @@
     owner: "{{ username_on_the_host }}"
     group: "{{ username_on_the_host }}"
     mode: "0700"
-  when: not terragrunt.stat.exists
+  when: not terragrunt.stat.exists or terragrunt_force_install

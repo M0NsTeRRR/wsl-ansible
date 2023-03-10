@@ -1,0 +1,19 @@
+---
+- name: Check if yq is already installed
+  ansible.builtin.stat:
+    path: /usr/local/bin/yq
+  register: yq
+
+- name: Detect machine architecture
+  ansible.builtin.set_fact:
+    yq_arch: "{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}"
+  when: not yq.stat.exists or yq_force_install
+
+- name: "Download yq version {{ yq_version }}"
+  ansible.builtin.get_url:
+    url: "https://github.com/mikefarah/yq/releases/download/v{{ yq_version }}/yq_linux_{{ yq_arch }}"
+    dest: /usr/local/bin/yq
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0700"
+  when: not yq.stat.exists or yq_force_install
