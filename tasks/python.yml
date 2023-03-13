@@ -22,3 +22,7 @@
 - name: Update poetry to latest version
   ansible.builtin.command: $HOME/.local/bin/poetry self update
   changed_when: false
+
+- name: Update poetry to latest version
+  ansible.builtin.command: $HOME/.local/bin/poetry config virtualenvs.in-project true
+  changed_when: false
