@@ -66,6 +66,8 @@
 
 - name: Add yq zsh function
   ansible.builtin.shell: echo "autoload -U compinit; compinit" >> ~/.zshrc && yq shell-completion zsh > "${fpath[1]}/_yq"
+  args:
+    executable: /bin/bash
   changed_when: false
 
 - name: Configure zsh
