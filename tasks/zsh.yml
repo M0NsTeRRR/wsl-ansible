@@ -33,12 +33,13 @@
 - name: "Install oh-my-zsh on specified account"
   ansible.builtin.command: sh /tmp/install.sh
   become_user: "{{ username_on_the_host }}"
+  changed_when: false
   when: not oh_my_zsh.stat.exists
 
 - name: Git clone powerlevel10k on specified account
   ansible.builtin.git:
     repo: https://github.com/romkatv/powerlevel10k.git
-    dest: "/home/{{ username_on_the_host }}/powerlevel10k"
+    dest: "/home/{{ username_on_the_host }}/.oh-my-zsh/custom/themes/powerlevel10k"
     depth: 1
     version: HEAD
 
