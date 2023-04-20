@@ -32,11 +32,11 @@
     - name: Include go
       ansible.builtin.include_tasks: tasks/go.yml
 
+    - name: Include ripgrep
+      ansible.builtin.include_tasks: tasks/ripgrep.yml
+
     - name: Include rust
       ansible.builtin.include_tasks: tasks/rust.yml
-
-    - name: Include keychain
-      ansible.builtin.include_tasks: tasks/keychain.yml
 
     - name: Include kubectl
       ansible.builtin.include_tasks: tasks/kubectl.yml
@@ -65,6 +65,9 @@
     - name: Include snmp
       ansible.builtin.include_tasks: tasks/snmp.yml
 
+    - name: Include socat
+      ansible.builtin.include_tasks: tasks/socat.yml
+
     - name: Include ssh_config
       ansible.builtin.include_tasks: tasks/ssh_config.yml
 
@@ -85,6 +88,9 @@
 
     - name: Include whois
       ansible.builtin.include_tasks: tasks/whois.yml
+
+    - name: Include wsl_ssh_agent
+      ansible.builtin.include_tasks: tasks/wsl_ssh_agent.yml
 
     - name: Include yq
       ansible.builtin.include_tasks: tasks/yq.yml

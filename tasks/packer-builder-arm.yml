@@ -29,7 +29,7 @@
 - name: Copy packer-builder-arm binary to /usr/local/bin
   ansible.builtin.copy:
     src: /tmp/packer-builder-arm/packer-builder-arm
-    dest: /usr/local/bin/packer-builder-arm
+    dest: /home/{{ username_on_the_host }}/.local/bin/packer-builder-arm
     owner: "{{ username_on_the_host }}"
     group: "{{ username_on_the_host }}"
     mode: "0700"

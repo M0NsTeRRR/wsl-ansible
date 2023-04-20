@@ -1,0 +1,23 @@
+---
+- name: Check if wsl_ssh_agent is already installed
+  ansible.builtin.stat:
+    path: /home/{{ username_on_the_host }}/.local/bin/wsl-ssh-agent-relay
+  register: wsl_ssh_agent
+
+- name: Download wsl ssh agent script
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/rupor-github/wsl-ssh-agent/master/docs/wsl-ssh-agent-relay
+    dest: /home/{{ username_on_the_host }}/.local/bin/wsl-ssh-agent-relay
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0700"
+  when: not wsl_ssh_agent.stat.exists or wsl_ssh_agent_force_install
+
+- name: Configure default SSH config
+  ansible.builtin.lineinfile:
+    dest: "/home/{{ username_on_the_host }}/.local/bin/wsl-ssh-agent-relay"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: "present"
+  with_items:
+    - {regexp: '^RELAY_BIN', line: 'RELAY_BIN="{{ wsl_ssh_agent_relay_bin }}"'}

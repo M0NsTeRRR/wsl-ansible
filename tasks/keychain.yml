@@ -1,5 +1,0 @@
----
-- name: Install keychain
-  ansible.builtin.apt:
-    name: keychain
-    state: present

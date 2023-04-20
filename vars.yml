@@ -5,7 +5,9 @@ git:
     email: ludovic.ortega@adminafk.fr
     signingkey: 81E390A404C7D583A6D6958E22F86C9B1BEC401D
 packer_builder_arm_force_install: true
-terragrunt_version: 0.43.1
+terragrunt_version: 0.45.4
 terragrunt_force_install: true
-yq_version: 4.31.2
+yq_version: 4.33.3
 yq_force_install: true
+wsl_ssh_agent_force_install: true
+wsl_ssh_agent_relay_bin: "${USERPROFILE}/.wsl/npiperelay.exe"

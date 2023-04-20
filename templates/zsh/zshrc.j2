@@ -78,5 +78,5 @@ export PATH=~/.local/bin:$PATH
 
 export GPG_TTY=$TTY
 
-/usr/bin/keychain --nogui $HOME/.ssh/homelab
-source $HOME/.keychain/$(hostname)-sh
+${HOME}/.local/bin/wsl-ssh-agent-relay start
+export SSH_AUTH_SOCK=${HOME}/.ssh/wsl-ssh-agent.sock
