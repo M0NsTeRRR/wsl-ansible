@@ -78,5 +78,5 @@ export PATH=~/.local/bin:$PATH
 
 export GPG_TTY=$TTY
 
-${HOME}/.local/bin/wsl-ssh-agent-relay start
+${HOME}/.local/bin/wsl-ssh-agent-relay -s start
 export SSH_AUTH_SOCK=${HOME}/.ssh/wsl-ssh-agent.sock
