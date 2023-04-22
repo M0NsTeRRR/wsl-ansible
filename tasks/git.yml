@@ -16,5 +16,5 @@
     - {name: "user.signingkey", value: "{{ git.user.signingkey }}"}
     - {name: "ui.color", value: "True"}
     - {name: "commit.gpgsign", value: "True"}
-    - {name: "gpg.program", value: "gpg2"}
+    - {name: "gpg.program", value: "{{ git.gpg_program }}"}
   become_user: "{{ username_on_the_host }}"

@@ -1,5 +1,0 @@
----
-- name: Install gnupg2
-  ansible.builtin.apt:
-    name: gnupg2
-    state: present
