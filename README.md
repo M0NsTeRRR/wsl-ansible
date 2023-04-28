@@ -10,22 +10,20 @@ This is my my WSL configuration provisionned by ansible.
 
 # Configure
 
-# Windows
 ##  SSH
-Enable ssh-agent on windows and share %USERPROFILE% env var to WSL2, open powershell prompt with admin right
+Enable ssh-agent on windows and share UserProfile and ProgramFiles env var to WSL2, open powershell prompt with admin right
 ```powershell
 Get-Service ssh-agent | Set-Service -StartupType Automatic
 Start-Service ssh-agent
-setx WSLENV USERPROFILE/up
+setx WSLENV 'ProgramFiles/up:USERPROFILE/up'
 ```
-Install niperelay in `%USERPROFILE%\.wsl`   
+Install niperelay on windows in `%USERPROFILE%\.wsl`   
 Enable ssh agent support for OpenSSH on keepassXC  
 
 ##  GPG
-Install GnuPG on Windows  
+Install GnuPG on Windows in `%PROGRAMFILES%`  
 Import GPG keys  
-Get GPG exe path `wsl wslpath $(where.exe gpg)`  
-Edit `vars.yml` if needed
+Share %PROGRAMFILES% env var (in SSH step)  
 
 ## Windows terminal
 [Download MesloLGS fonts](https://github.com/romkatv/dotfiles-public/tree/master/.local/share/fonts/NerdFonts) and install them

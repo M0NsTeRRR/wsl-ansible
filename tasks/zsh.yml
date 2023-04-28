@@ -71,6 +71,14 @@
     executable: /bin/bash
   changed_when: false
 
+- name: Add consul zsh completion
+  ansible.builtin.shell: consul -autocomplete-install
+  changed_when: false
+
+- name: Add vault zsh completion
+  ansible.builtin.shell: vault -autocomplete-install
+  changed_when: false
+
 - name: Configure zsh
   ansible.builtin.template:
     src: zsh/zshrc.j2

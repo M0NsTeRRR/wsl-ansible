@@ -1,0 +1,5 @@
+---
+- name: Install Kubectx
+  ansible.builtin.apt:
+    name: kubectx
+    state: present

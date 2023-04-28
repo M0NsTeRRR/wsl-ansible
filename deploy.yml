@@ -23,6 +23,9 @@
     - name: Include CA
       ansible.builtin.include_tasks: tasks/ca.yml
 
+    - name: Include consul
+      ansible.builtin.include_tasks: tasks/consul.yml
+
     - name: Include dos2unix
       ansible.builtin.include_tasks: tasks/dos2unix.yml
 
@@ -40,6 +43,9 @@
 
     - name: Include kubectl
       ansible.builtin.include_tasks: tasks/kubectl.yml
+
+    - name: Include kubectx
+      ansible.builtin.include_tasks: tasks/kubectx.yml
 
     - name: Include motd
       ansible.builtin.include_tasks: tasks/motd.yml
@@ -82,6 +88,9 @@
 
     - name: Include unzip
       ansible.builtin.include_tasks: tasks/unzip.yml
+
+    - name: Include vault
+      ansible.builtin.include_tasks: tasks/vault.yml
 
     - name: Include whois
       ansible.builtin.include_tasks: tasks/whois.yml
