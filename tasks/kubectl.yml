@@ -15,3 +15,27 @@
   ansible.builtin.apt:
     name: kubectl
     state: present
+
+- name: Create .kube directory
+  ansible.builtin.file:
+    path: "/home/{{ username_on_the_host }}/.kube"
+    state: directory
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0755"
+
+- name: Create .kube directory
+  ansible.builtin.file:
+    path: "/home/{{ username_on_the_host }}/.kube"
+    state: directory
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0700"
+
+- name: Copy kubeconfig
+  ansible.builtin.copy:
+    src: ./files/k8s/kubeconfig
+    dest: /home/{{ username_on_the_host }}/.kube/config
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0600"
