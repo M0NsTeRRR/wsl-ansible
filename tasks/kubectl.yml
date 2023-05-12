@@ -26,16 +26,26 @@
 
 - name: Create .kube directory
   ansible.builtin.file:
-    path: "/home/{{ username_on_the_host }}/.kube"
+    path: "/home/{{ username_on_the_host }}/{{ item }}"
     state: directory
     owner: "{{ username_on_the_host }}"
     group: "{{ username_on_the_host }}"
     mode: "0700"
+  with_items:
+    - .kube
+    - certs
 
-- name: Copy kubeconfig
-  ansible.builtin.copy:
-    src: ./files/k8s/kubeconfig
+- name: Generate kubeconfig
+  ansible.builtin.template:
+    src: ./templates/k8s/kubeconfig.yml.j2
     dest: /home/{{ username_on_the_host }}/.kube/config
     owner: "{{ username_on_the_host }}"
     group: "{{ username_on_the_host }}"
     mode: "0600"
+
+- name: Copy certs files
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/home/{{ username_on_the_host }}/.kube/certs/{{ item }}"
+    mode: "0644"
+  with_fileglob: ./files/k8s/certs/*
