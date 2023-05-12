@@ -5,6 +5,8 @@ git:
     email: ludovic.ortega@adminafk.fr
     signingkey: 81E390A404C7D583A6D6958E22F86C9B1BEC401D
   gpg_program: '$(printenv "ProgramFiles(x86)")/GnuPG/bin/gpg.exe'
+k9s_version: 0.27.4
+k9s_force_install: true
 packer_builder_arm_force_install: true
 terragrunt_version: 0.45.4
 terragrunt_force_install: true

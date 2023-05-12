@@ -47,6 +47,9 @@
     - name: Include kubectx
       ansible.builtin.include_tasks: tasks/kubectx.yml
 
+    - name: Include k9s
+      ansible.builtin.include_tasks: tasks/k9s.yml
+
     - name: Include motd
       ansible.builtin.include_tasks: tasks/motd.yml
 

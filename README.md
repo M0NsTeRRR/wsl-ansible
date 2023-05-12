@@ -17,10 +17,10 @@ Get-Service ssh-agent | Set-Service -StartupType Automatic
 Start-Service ssh-agent
 setx WSLENV 'ProgramFiles/up:USERPROFILE/up'
 ```
-Install niperelay on windows in `%USERPROFILE%\.wsl`   
+Install niperelay on windows in `%USERPROFILE%\.wsl`  
 Enable ssh agent support for OpenSSH on keepassXC  
 
-##  GPG
+##  GPG  
 Install GnuPG on Windows in `%PROGRAMFILES%`  
 Import GPG keys  
 Share %PROGRAMFILES% env var (in SSH step)  
