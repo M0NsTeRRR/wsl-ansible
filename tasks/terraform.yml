@@ -7,7 +7,7 @@
 
 - name: Add Hashicorp Apt repository
   ansible.builtin.apt_repository:
-    repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/hashicorp.asc] https://apt.releases.hashicorp.com {{ ansible_distribution_release | lower }} main"
+    repo: "deb [signed-by=/usr/share/keyrings/hashicorp.asc] https://apt.releases.hashicorp.com {{ ansible_distribution_release | lower }} main"
     state: present
     filename: hashicorp
 

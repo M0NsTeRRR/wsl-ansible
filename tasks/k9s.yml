@@ -2,7 +2,7 @@
 - name: Check if k9s is already installed
   ansible.builtin.stat:
     path: /home/{{ username_on_the_host }}/.local/bin/k9s
-  register: k9s
+  register: k9s_exists
 
 - name: "Download k9s version {{ k9s_version }}"
   ansible.builtin.get_url:
@@ -11,16 +11,16 @@
     owner: "{{ username_on_the_host }}"
     group: "{{ username_on_the_host }}"
     mode: "0700"
-  when: not k9s.stat.exists or k9s_force_install
+  when: not k9s_exists.stat.exists or k9s_force_install
 
 - name: Extract k9s binary
   ansible.builtin.unarchive:
     src: /tmp/k9s.tar.gz
-    dest: /tmp/k9s
+    dest: /tmp
     remote_src: true
     list_files: true
   register: archive_contents
-  when: not k9s.stat.exists or k9s_force_install
+  when: not k9s_exists.stat.exists or k9s_force_install
 
 - name: Copy k9s binary to /usr/local/bin
   ansible.builtin.copy:
@@ -30,4 +30,4 @@
     group: "{{ username_on_the_host }}"
     mode: "0700"
     remote_src: true
-  when: not k9s.stat.exists or k9s_force_install
+  when: not k9s_exists.stat.exists or k9s_force_install

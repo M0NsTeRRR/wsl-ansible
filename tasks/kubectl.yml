@@ -24,7 +24,7 @@
     group: "{{ username_on_the_host }}"
     mode: "0755"
 
-- name: Create .kube directory
+- name: Create config directory
   ansible.builtin.file:
     path: "/home/{{ username_on_the_host }}/{{ item }}"
     state: directory

@@ -1,5 +1,33 @@
 ---
-- name: Install Kubectx
-  ansible.builtin.apt:
-    name: kubectx
-    state: present
+- name: Check if kubectl is already installed
+  ansible.builtin.stat:
+    path: /home/{{ username_on_the_host }}/.local/bin/kubectx
+  register: kubectx_exists
+
+- name: "Download kubectx version {{ kubectx_version }}"
+  ansible.builtin.get_url:
+    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubectx_version }}/kubectx_v{{ kubectx_version }}_linux_x86_64.tar.gz"
+    dest: /tmp/kubectx.tar.gz
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0700"
+  when: not kubectx_exists.stat.exists or kubectx_force_install
+
+- name: Extract kubectx binary
+  ansible.builtin.unarchive:
+    src: /tmp/kubectx.tar.gz
+    dest: /tmp
+    remote_src: true
+    list_files: true
+  register: archive_contents
+  when: not kubectx_exists.stat.exists or kubectx_force_install
+
+- name: Copy kubectx_exists binary to /usr/local/bin
+  ansible.builtin.copy:
+    src: /tmp/kubectx
+    dest: /home/{{ username_on_the_host }}/.local/bin/kubectx
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0700"
+    remote_src: true
+  when: not kubectx_exists.stat.exists or kubectx_force_install

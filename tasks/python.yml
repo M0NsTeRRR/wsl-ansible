@@ -9,20 +9,29 @@
     name: python3-venv
     state: present
 
+- name: Check if poetry is installed  # noqa no-changed-when
+  ansible.builtin.command: $HOME/.local/bin/poetry --version
+  register: poetry_exists
+  ignore_errors: true
+
 - name: Download poetry install script
   ansible.builtin.get_url:
     url: https://install.python-poetry.org
     dest: /tmp/poetry.org
     mode: "0744"
+  when: poetry_exists is failed or poetry_force_install
 
 - name: Install poetry with downloaded script
   ansible.builtin.command: python3 /tmp/poetry.org
   changed_when: false
+  when: poetry_exists is failed or poetry_force_install
 
 - name: Update poetry to latest version
   ansible.builtin.command: $HOME/.local/bin/poetry self update
   changed_when: false
+  when: poetry_exists is failed or poetry_force_install
 
 - name: Update poetry to latest version
   ansible.builtin.command: $HOME/.local/bin/poetry config virtualenvs.in-project true
   changed_when: false
+  when: poetry_exists is failed or poetry_force_install

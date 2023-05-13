@@ -1,6 +1,6 @@
 ---
 - name: Check if cargo is installed  # noqa no-changed-when
-  ansible.builtin.command: command -v cargo
+  ansible.builtin.command: $HOME/.cargo/bin/cargo --version
   register: cargo_exists
   ignore_errors: true
 
@@ -10,9 +10,9 @@
     dest: /tmp/sh.rustup.rs
     mode: '0755'
     force: 'yes'
-  when: cargo_exists is failed
+  when: cargo_exists is failed or cargo_force_install
 
 - name: Install rust/cargo
   ansible.builtin.shell: /tmp/sh.rustup.rs -y
   changed_when: false
-  when: cargo_exists is failed
+  when: cargo_exists is failed or cargo_force_install

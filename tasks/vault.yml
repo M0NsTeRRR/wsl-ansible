@@ -15,3 +15,18 @@
   ansible.builtin.apt:
     name: "vault"
     state: present
+
+- name: Create config directory
+  ansible.builtin.file:
+    path: "/home/{{ username_on_the_host }}/.vault"
+    state: directory
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0700"
+
+- name: Copy certs files
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/home/{{ username_on_the_host }}/.vault/certs/{{ item }}"
+    mode: "0644"
+  with_fileglob: ./files/vault/certs/*

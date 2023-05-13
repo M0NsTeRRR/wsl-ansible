@@ -1,0 +1,33 @@
+---
+- name: Check if kubectl is already installed
+  ansible.builtin.stat:
+    path: /home/{{ username_on_the_host }}/.local/bin/kubens
+  register: kubens_exists
+
+- name: "Download kubens version {{ kubens_version }}"
+  ansible.builtin.get_url:
+    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubens_version }}/kubens_v{{ kubens_version }}_linux_x86_64.tar.gz"
+    dest: /tmp/kubens.tar.gz
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0700"
+  when: not kubens_exists.stat.exists or kubens_force_install
+
+- name: Extract kubens binary
+  ansible.builtin.unarchive:
+    src: /tmp/kubens.tar.gz
+    dest: /tmp
+    remote_src: true
+    list_files: true
+  register: archive_contents
+  when: not kubens_exists.stat.exists or kubens_force_install
+
+- name: Copy kubens_exists binary to /usr/local/bin
+  ansible.builtin.copy:
+    src: /tmp/kubens
+    dest: /home/{{ username_on_the_host }}/.local/bin/kubens
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0700"
+    remote_src: true
+  when: not kubens_exists.stat.exists or kubens_force_install

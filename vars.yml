@@ -1,14 +1,20 @@
 ---
+cargo_force_install: true
 git:
   user:
     name: Ludovic Ortega
     email: ludovic.ortega@adminafk.fr
     signingkey: 81E390A404C7D583A6D6958E22F86C9B1BEC401D
-  gpg_program: '$(printenv "ProgramFiles(x86)")/GnuPG/bin/gpg.exe'
+  gpg_program: "{{ lookup('ansible.builtin.env', 'ProgramFiles') }}/GnuPG/bin/gpg.exe"
 k9s_version: 0.27.4
 k9s_force_install: true
+kubectx_version: 0.9.4
+kubectx_force_install: true
+kubens_version: 0.9.4
+kubens_force_install: true
 packer_builder_arm_force_install: true
-terragrunt_version: 0.45.4
+poetry_force_install: true
+terragrunt_version: 0.45.11
 terragrunt_force_install: true
 yq_version: 4.33.3
 yq_force_install: true

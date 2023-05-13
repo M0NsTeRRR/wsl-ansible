@@ -28,6 +28,8 @@ Share %PROGRAMFILES% env var (in SSH step)
 ## Windows terminal
 [Download MesloLGS fonts](https://github.com/romkatv/dotfiles-public/tree/master/.local/share/fonts/NerdFonts) and install them
 
+Set `terminal.integrated.fontFamily` to `MesloLGS NF` in VSCode to display font icon in terminal  
+
 Change `defaultProfile` with Ubuntu GUID  
 
 Edit ubuntu profile and replace with this  
