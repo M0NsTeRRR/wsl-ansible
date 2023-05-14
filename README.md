@@ -11,6 +11,7 @@ This is my my WSL configuration provisionned by ansible.
 # Configure
 
 ##  SSH
+Install SSH client from winget ` winget install "openssh beta"` (it can causes error using old version)  
 Enable ssh-agent on windows and share UserProfile and ProgramFiles env var to WSL2, open powershell prompt with admin right
 ```powershell
 Get-Service ssh-agent | Set-Service -StartupType Automatic
