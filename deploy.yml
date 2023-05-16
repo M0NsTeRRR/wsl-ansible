@@ -35,11 +35,20 @@
     - name: Include go
       ansible.builtin.include_tasks: tasks/go.yml
 
+    - name: Include helm
+      ansible.builtin.include_tasks: tasks/helm.yml
+
     - name: Include ripgrep
       ansible.builtin.include_tasks: tasks/ripgrep.yml
 
     - name: Include rust
       ansible.builtin.include_tasks: tasks/rust.yml
+
+    - name: Include k9s
+      ansible.builtin.include_tasks: tasks/k9s.yml
+
+    - name: Include kompose
+      ansible.builtin.include_tasks: tasks/kompose.yml
 
     - name: Include kubectl
       ansible.builtin.include_tasks: tasks/kubectl.yml
@@ -49,9 +58,6 @@
 
     - name: Include kubens
       ansible.builtin.include_tasks: tasks/kubens.yml
-
-    - name: Include k9s
-      ansible.builtin.include_tasks: tasks/k9s.yml
 
     - name: Include motd
       ansible.builtin.include_tasks: tasks/motd.yml

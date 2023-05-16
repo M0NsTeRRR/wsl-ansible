@@ -1,0 +1,14 @@
+---
+- name: Check if kompose is already installed
+  ansible.builtin.stat:
+    path: /home/{{ username_on_the_host }}/.local/bin/kompose
+  register: kompose
+
+- name: "Download kompose version {{ kompose_version }}"
+  ansible.builtin.get_url:
+    url: "https://github.com/kubernetes/kompose/releases/download/v{{ kompose_version }}/kompose-linux-amd64"
+    dest: /home/{{ username_on_the_host }}/.local/bin/kompose
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0700"
+  when: not kompose.stat.exists or kompose_force_install
