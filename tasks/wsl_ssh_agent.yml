@@ -21,3 +21,11 @@
     state: "present"
   with_items:
     - {regexp: '^RELAY_BIN', line: 'RELAY_BIN="{{ wsl_ssh_agent_relay_bin }}"'}
+
+- name: Create ssh directory
+  ansible.builtin.file:
+    path: "/home/{{ username_on_the_host }}/.ssh"
+    state: directory
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0644"

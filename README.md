@@ -111,6 +111,9 @@ Disable wsl bell sound in profiles -> defaults
 ## WSL
 Create `/etc/wsl.conf`  
 ```
+[boot]
+systemd=true
+
 [automount]
 enabled = true
 mountFsTab = false
@@ -121,10 +124,6 @@ options = "metadata,umask=22,fmask=11"
 generateHosts = true
 generateResolvConf = true
 ```
-
-Create `~/.ssh` folder for `lortega` user  
-Add all private and public keys to the folder  
-Add `lortega` to sudoers  
 
 #  Run
 Update `vars.yml` if needed
