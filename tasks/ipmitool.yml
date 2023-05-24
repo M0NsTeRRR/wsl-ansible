@@ -1,0 +1,5 @@
+---
+- name: Install ipmitool
+  ansible.builtin.apt:
+    name: ipmitool
+    state: present

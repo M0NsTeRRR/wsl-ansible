@@ -38,6 +38,9 @@
     - name: Include helm
       ansible.builtin.include_tasks: tasks/helm.yml
 
+    - name: Include ipmitool
+      ansible.builtin.include_tasks: tasks/ipmitool.yml
+
     - name: Include ripgrep
       ansible.builtin.include_tasks: tasks/ripgrep.yml
 
