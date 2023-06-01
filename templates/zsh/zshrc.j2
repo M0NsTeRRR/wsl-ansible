@@ -81,12 +81,15 @@ RPS1='$(kubectx_prompt_info)'
 
 export PATH=~/.local/bin:$PATH
 
+# Kubeconfig
+export KUBECONFIG=$(for YAML in $(find ${HOME}/.kube -name '*.yaml') ; do echo -n ":${YAML}"; done)
+
 # Consul config
-CONSUL_HTTP_ADDR=https://consul.unicornafk.fr:8501
-CONSUL_HTTP_SSL=true
-CONSUL_HTTP_SSL_VERIFY=true
-CONSUL_CLIENT_CERT=~/.consul/certs/consul.unicornafk.fr.crt
-CONSUL_CLIENT_KEY=~/.consul/certs/consul.unicornafk.fr.key
+# CONSUL_HTTP_ADDR=https://consul.unicornafk.fr:8501
+# CONSUL_HTTP_SSL=true
+# CONSUL_HTTP_SSL_VERIFY=true
+# CONSUL_CLIENT_CERT=~/.consul/certs/consul.unicornafk.fr.crt
+# CONSUL_CLIENT_KEY=~/.consul/certs/consul.unicornafk.fr.key
 
 # Vault config
 VAULT_ADDR=https://vault.unicornafk.fr:8200

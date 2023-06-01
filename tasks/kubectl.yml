@@ -35,14 +35,6 @@
     - .kube
     - certs
 
-- name: Generate kubeconfig
-  ansible.builtin.template:
-    src: ./templates/k8s/kubeconfig.yml.j2
-    dest: /home/{{ username_on_the_host }}/.kube/config
-    owner: "{{ username_on_the_host }}"
-    group: "{{ username_on_the_host }}"
-    mode: "0600"
-
 - name: Copy certs files
   ansible.builtin.copy:
     src: "{{ item }}"
