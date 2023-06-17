@@ -5,7 +5,7 @@ This is my my WSL configuration provisionned by ansible.
 # Requirements
 
 - WSL2 with Ubuntu (version >= 22.04)
-- Ansible (version >= 2.14)
+- Python3 and Pip
 - Windows Terminal
 
 # Configure
@@ -126,6 +126,10 @@ generateResolvConf = true
 ```
 
 #  Run
+Create a python environment `python3 -m venv venv`  
+Source it `source venv/bin/activate`  
+Install python dependencies `pip3 install -r requirements.txt`
+
 Update `vars.yml` if needed
 
 Put CA certificates in `files/ca`

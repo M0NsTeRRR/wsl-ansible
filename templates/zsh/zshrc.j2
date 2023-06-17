@@ -81,6 +81,12 @@ RPS1='$(kubectx_prompt_info)'
 
 export PATH=~/.local/bin:$PATH
 
+# Run motd
+run-parts /etc/update-motd.d
+
+# Python SSL self signed certs
+REQUESTS_CA_BUNDLE="/etc/ssl/certs/ca-certificates.crt"
+
 # Kubeconfig
 export KUBECONFIG=$(for YAML in $(find ${HOME}/.kube -name '*.yaml') ; do echo -n ":${YAML}"; done)
 

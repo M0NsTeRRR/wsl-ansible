@@ -1,4 +1,11 @@
 ---
+- name: Install required packages
+  ansible.builtin.apt:
+    name:
+      - figlet
+      - lolcat
+    state: present
+
 - name: Find all motd files
   ansible.builtin.find:
     path: /etc/update-motd.d
