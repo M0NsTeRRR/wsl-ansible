@@ -2,3 +2,5 @@ skip_list:
   - '305'  # Use shell only when shell functionality is required
   - 'git-latest' # Git checkouts must contain explicit version
   - 'yaml[line-length]'  # Lines should be no longer than 160 chars
+exclude_paths:
+  - .github

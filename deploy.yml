@@ -11,8 +11,8 @@
 
     - name: Update and upgrade all packages
       ansible.builtin.apt:
-        upgrade: 'yes'
-        update_cache: 'yes'
+        upgrade: true
+        update_cache: true
 
     - name: Create /etc/apt/keyrings used by GPG key for apt
       ansible.builtin.file:
