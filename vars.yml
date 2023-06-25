@@ -14,6 +14,7 @@ kubectx_version: 0.9.4
 kubectx_force_install: true
 kubens_version: 0.9.4
 kubens_force_install: true
+nodejs_version: 18
 packer_builder_arm_force_install: true
 poetry_force_install: true
 terragrunt_version: 0.45.16

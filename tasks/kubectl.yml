@@ -2,12 +2,12 @@
 - name: Add Kubernetes Apt signing key
   ansible.builtin.get_url:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    dest: /usr/share/keyrings/kubernetes.asc
+    dest: /etc/apt/keyrings/kubernetes.asc
     mode: "0644"
 
 - name: Add Kubernetes Apt repository
   ansible.builtin.apt_repository:
-    repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/kubernetes.asc] https://apt.kubernetes.io/ kubernetes-xenial main"
+    repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/kubernetes.asc] https://apt.kubernetes.io/ kubernetes-xenial main"
     state: present
     filename: kubernetes
 

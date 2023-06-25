@@ -14,6 +14,14 @@
         upgrade: 'yes'
         update_cache: 'yes'
 
+    - name: Create /etc/apt/keyrings used by GPG key for apt
+      ansible.builtin.file:
+        name: /etc/apt/keyrings
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
     - name: Include python
       ansible.builtin.include_tasks: tasks/python.yml
 
@@ -67,6 +75,9 @@
 
     - name: Include nmap
       ansible.builtin.include_tasks: tasks/nmap.yml
+
+    - name: Include nodejs
+      ansible.builtin.include_tasks: tasks/nodejs.yml
 
     - name: Include ntp
       ansible.builtin.include_tasks: tasks/ntp.yml
