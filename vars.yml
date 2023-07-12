@@ -17,6 +17,13 @@ kubens_force_install: true
 nodejs_version: 18
 packer_builder_arm_force_install: true
 poetry_force_install: true
+ssh_config_hosts:
+  - host: sw1.unicornafk.fr
+    host_key_algorithms: ssh-rsa
+    kex_algorithms: diffie-hellman-group14-sha1
+  - host: sw3.unicornafk.fr
+    host_key_algorithms: ssh-rsa
+    kex_algorithms: diffie-hellman-group14-sha1
 terragrunt_version: 0.45.16
 terragrunt_force_install: true
 yq_version: 4.34.1

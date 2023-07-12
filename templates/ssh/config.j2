@@ -1,0 +1,8 @@
+{% for host in ssh_config_hosts %}
+Host {{ host.host }}
+	Hostname {{ host.host }}
+	{% if 'host_key_algorithms' in host %}HostKeyAlgorithms {{ host.host_key_algorithms }}{% endif %}
+	{% if 'cipher' in host %}Ciphers {{ host.cipher }}{% endif %}
+	{% if 'mac' in host %}MACs {{ host.mac }}{% endif %}
+	{% if 'kex_algorithms' in host %}KexAlgorithms {{ host.kex_algorithms }}{% endif %}
+{% endfor %}

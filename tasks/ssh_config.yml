@@ -7,3 +7,11 @@
     state: "present"
   with_items:
     - {regexp: '^(#   )?VerifyHostKeyDNS', line: 'VerifyHostKeyDNS ask'}
+
+- name: Create ssh config
+  ansible.builtin.templeate:
+    src: ssh/config.j2
+    dest: "/home/{{ username_on_the_host }}/.ssh/config"
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: "0600"

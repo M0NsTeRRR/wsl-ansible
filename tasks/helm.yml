@@ -5,7 +5,7 @@
     dest: /etc/apt/keyrings/helm.asc
     mode: "0644"
 
-- name: Add Hashicorp Apt repository
+- name: Add Helm Apt repository
   ansible.builtin.apt_repository:
     repo: "deb [signed-by=/etc/apt/keyrings/helm.asc] https://baltocdn.com/helm/stable/debian/ all main"
     state: present
@@ -14,4 +14,9 @@
 - name: Install helm
   ansible.builtin.apt:
     name: helm
+    state: present
+
+- name: Install Helm diff plugin
+  kubernetes.core.helm_plugin:
+    plugin_path: https://github.com/databus23/helm-diff
     state: present
