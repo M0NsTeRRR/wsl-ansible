@@ -88,7 +88,7 @@ run-parts /etc/update-motd.d
 REQUESTS_CA_BUNDLE="/etc/ssl/certs/ca-certificates.crt"
 
 # Kubeconfig
-export KUBECONFIG=$(for YAML in $(find ${HOME}/.kube -name '*.yaml') ; do echo -n ":${YAML}"; done)
+export KUBECONFIG=$(for YAML in $(find ${HOME}/.kube -type f -maxdepth 1 -name '*') ; do echo -n ":${YAML}"; done)
 
 # Consul config
 # CONSUL_HTTP_ADDR=https://consul.unicornafk.fr:8501
