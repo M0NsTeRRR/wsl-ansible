@@ -22,7 +22,7 @@
         group: root
         mode: "0755"
 
-    - name: Create /home/{{ username_on_the_host }}/.local/bin
+    - name: Create .local/bin
       ansible.builtin.file:
         name: /home/{{ username_on_the_host }}/.local/bin
         state: directory
