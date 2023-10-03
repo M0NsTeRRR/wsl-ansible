@@ -22,6 +22,14 @@
         group: root
         mode: "0755"
 
+    - name: Create /home/{{ username_on_the_host }}/.local/bin
+      ansible.builtin.file:
+        name: /home/{{ username_on_the_host }}/.local/bin
+        state: directory
+        owner: "{{ username_on_the_host }}"
+        group: "{{ username_on_the_host }}"
+        mode: "0700"
+
     - name: Include python
       ansible.builtin.include_tasks: tasks/python.yml
 
