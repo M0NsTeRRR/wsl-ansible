@@ -81,6 +81,9 @@
     - name: Include motd
       ansible.builtin.include_tasks: tasks/motd.yml
 
+    - name: Include mysql
+      ansible.builtin.include_tasks: tasks/mysql.yml
+
     - name: Include nmap
       ansible.builtin.include_tasks: tasks/nmap.yml
 
@@ -95,6 +98,9 @@
 
     - name: Include packer
       ansible.builtin.include_tasks: tasks/packer.yml
+
+    - name: Include psql
+      ansible.builtin.include_tasks: tasks/psql.yml
 
     - name: Include restic
       ansible.builtin.include_tasks: tasks/restic.yml
