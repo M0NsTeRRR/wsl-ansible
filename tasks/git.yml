@@ -19,5 +19,6 @@
     - {name: "format.signoff", value: "true"}
     - {name: "gpg.program", value: "{{ git.gpg_program }}"}
     - {name: "pull.rebase", value: "true"}
+    - {name: "pull.autoSetupRemote", value: "true"}
   become_user: "{{ username_on_the_host }}"
   become: true
