@@ -1,3 +1,7 @@
+# I've migrated to nixos regarding privacy concerns :)
+https://github.com/M0NsTeRRR/nixos-home
+
+---
 This is my my WSL configuration provisionned by ansible.
 
 ![Ansible Lint](https://github.com/M0NsTeRRR/wsl-ansible/workflows/Ansible%20Lint/badge.svg)
